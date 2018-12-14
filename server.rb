@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'rack/flash'
 require 'sqlite3'
 require 'streamio-ffmpeg'
 require 'json'
@@ -15,23 +14,22 @@ class LoginScreen < Sinatra::Base
       provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], { :hd => ['fout.jp', 'split-global.com']}
     end
   end
-  
+
   helpers GoogleAuthHelper
   get '/logout' do
     session[:user] = nil
     redirect '/'
   end
-  
+
   get '/auth/failure' do
     content_type 'text/plain'
     begin
-      flash[:message] = request['message']     
       redirect '/'
     rescue StandardError
       'No Data'
     end
   end
-  
+
   get '/auth/google_oauth2/callback' do
     begin
       session[:user] = request.env['omniauth.auth'].info.to_hash
@@ -43,28 +41,30 @@ class LoginScreen < Sinatra::Base
 end
 
 class App < Sinatra::Base
-  helpers GoogleAuthHelper
+#  helpers GoogleAuthHelper
 
   configure do
     enable :sessions
-    use Rack::Flash
     DB = SQLite3::Database.new 'db/transcode.db'
     DB.busy_timeout(10000) # 10sec
     DB.results_as_hash = true
   end
 
-  use LoginScreen
-  before do
-    unless login?
-      halt "Access denied, please <a href='/auth/google_oauth2'>login</a>."
-    end
-  end
+# use LoginScreen
+#`  before do
+#    unless login?
+#      halt "Access denied, please <a href='/auth/google_oauth2'>login</a>."
+#    end
+#  end
   
   get '/' do
     erb :form
   end
 
   post '/api/upload' do
+    user_name = 'user'
+    user_email = 'user@user'
+
     filename = params[:file][:filename]
     advertiser = params[:advertiser]
     quality = params[:quality]

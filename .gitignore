@@ -1,2 +1,16 @@
 /db/transcode.db
 /credentals.rb
+/.ruby-version
+.DS_Store
+
+/tmp/*
+!/tmp/.gitkeep
+
+/output/*
+!/output/.gitkeep
+
+/source/*
+!/source/.gitkeep
+
+/log/*
+!/log/.gitkeep

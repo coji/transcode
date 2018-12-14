@@ -17,33 +17,6 @@
       <v-app>
         <v-toolbar dark color="primary">
           <v-toolbar-title class="white--text">Video Transcoder</v-toolbar-title>
-          <v-spacer></v-spacer>
-          
-          <v-menu offset-y>
-            <v-avatar slot="activator" size="32px">
-              <img src="<%= user_image %>">
-            </v-avatar>
-            <v-list>
-              <v-list-tile>
-                <v-list-tile-content>
-                  <v-list-tile-title>
-                    <%= user_name %>
-                  </v-list-tile-title>
-                  <v-list-tile-sub-title>
-                    <%= user_email %>
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-
-              <v-divider></v-divider>
-
-              <v-list-tile>
-                <v-list-tile-title>
-                  <a href="/logout">Sign Out</a>
-                </v-list-tile-title>
-              </v-list-tile>
-            </v-list>
-          </v-menu>
         </v-toolbar>
 
         <v-content>
