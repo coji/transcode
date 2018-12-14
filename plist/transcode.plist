@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>transcode</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/bin:/usr/bin:/usr/local/bin:/usr/local/sbin</string>
+    </dict>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/coji/.rbenv/shims/bundle</string>
+        <string>exec</string>
+        <string>rackup</string>
+        <string>config.ru</string>
+        <string>-p</string>
+        <string>9292</string>
+    </array>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/coji/Desktop/transcode/log/transcode.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/coji/Desktop/transcode/log/transcode.err.log</string>
+    <key>UserName</key>
+    <string>coji</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/coji/Desktop/transcode</string>
+</dict>
+</plist>
+
